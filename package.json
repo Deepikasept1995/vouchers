@@ -1,0 +1,45 @@
+{
+  "name": "voucher-qc",
+  "version": "1.0.0",
+  "description": "Automated QC tool for e-commerce voucher codes",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "voucher-qc": "./bin/voucher-qc.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "build": "mkdir -p bin && echo '#!/usr/bin/env node\n\nimport \"../src/index.js\";' > bin/voucher-qc.js && chmod +x bin/voucher-qc.js",
+    "postinstall": "npm run build",
+    "init": "node src/index.js init",
+    "run": "node src/index.js run"
+  },
+  "keywords": [
+    "voucher",
+    "discount",
+    "e-commerce",
+    "testing",
+    "automation",
+    "qc",
+    "quality-control"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "exceljs": "^4.4.0",
+    "ora": "^7.0.1",
+    "puppeteer": "^21.6.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

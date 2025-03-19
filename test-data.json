@@ -1,0 +1,110 @@
+[
+  {
+    "id": "percentage-discount-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product",
+    "voucherCode": "WELCOME10",
+    "expectedDiscount": 10,
+    "voucherType": "PERCENTAGE"
+  },
+  {
+    "id": "fixed-amount-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product",
+    "voucherCode": "SAVE20",
+    "expectedDiscount": 20,
+    "voucherType": "FIXED_AMOUNT"
+  },
+  {
+    "id": "free-shipping-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product",
+    "voucherCode": "FREESHIP",
+    "voucherType": "FREE_SHIPPING"
+  },
+  {
+    "id": "bogo-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product",
+    "voucherCode": "BOGO50",
+    "voucherType": "BOGO",
+    "secondProductUrl": "https://example.myshopify.com/products/another-product"
+  },
+  {
+    "id": "tiered-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product",
+    "voucherCode": "SPEND100",
+    "voucherType": "TIERED",
+    "targetSpend": 100
+  },
+  {
+    "id": "combination-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product",
+    "voucherCode": "WELCOME10SHIP",
+    "voucherType": "COMBINATION",
+    "combinationTypes": ["PERCENTAGE", "FREE_SHIPPING"]
+  },
+  {
+    "id": "utm-test-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product?utm_source=email&utm_medium=campaign&utm_campaign=welcome",
+    "voucherCode": "WELCOME10",
+    "expectedDiscount": 10,
+    "voucherType": "PERCENTAGE"
+  },
+  {
+    "id": "custom-shipping-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product",
+    "voucherCode": "WELCOME10",
+    "expectedDiscount": 10,
+    "voucherType": "PERCENTAGE",
+    "shippingAddress": {
+      "firstName": "Custom",
+      "lastName": "User",
+      "address1": "456 Custom St",
+      "city": "Custom City",
+      "zip": "54321",
+      "country": "United States",
+      "state": "California",
+      "phone": "9876543210"
+    }
+  },
+  {
+    "id": "skip-shipping-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product",
+    "voucherCode": "WELCOME10",
+    "expectedDiscount": 10,
+    "voucherType": "PERCENTAGE",
+    "fillShipping": false
+  },
+  {
+    "id": "fallback-products-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/out-of-stock-product",
+    "voucherCode": "WELCOME10",
+    "expectedDiscount": 10,
+    "voucherType": "PERCENTAGE",
+    "fallbackProducts": [
+      {
+        "url": "https://example.myshopify.com/products/fallback-product-1"
+      },
+      {
+        "url": "https://example.myshopify.com/products/fallback-product-2"
+      }
+    ]
+  },
+  {
+    "id": "skipped-test-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product",
+    "voucherCode": "EXPIRED10",
+    "expectedDiscount": 10,
+    "voucherType": "PERCENTAGE",
+    "skip": true,
+    "skipReason": "Voucher code has expired"
+  }
+]

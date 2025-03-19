@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voucher QC Tool Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            border-left: 5px solid #007bff;
+        }
+        h1, h2, h3 {
+            color: #007bff;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            flex: 1;
+            min-width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #0069d9;
+        }
+        .screenshot {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .workflow {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .workflow-step {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            margin: 0 5px 10px;
+        }
+        .workflow-step h4 {
+            margin-top: 0;
+        }
+        .workflow-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            color: #007bff;
+            padding: 0 10px;
+        }
+        @media (max-width: 768px) {
+            .workflow-arrow {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Voucher QC Tool</h1>
+        <p>Automated quality control for e-commerce voucher codes</p>
+    </header>
+
+    <section>
+        <h2>How It Works</h2>
+        <div class="workflow">
+            <div class="workflow-step">
+                <h4>1. UTM Link</h4>
+                <p>Start with product URL with UTM parameters</p>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-step">
+                <h4>2. Add to Cart</h4>
+                <p>Automatically add product to cart</p>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-step">
+                <h4>3. Apply Voucher</h4>
+                <p>Enter and apply discount code</p>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-step">
+                <h4>4. Verify</h4>
+                <p>Check if voucher applied correctly</p>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-step">
+                <h4>5. Report</h4>
+                <p>Generate detailed QC report</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="card">
+            <h3>Supported Voucher Types</h3>
+            <ul>
+                <li><strong>Percentage Discount</strong>: e.g., 10% off entire order</li>
+                <li><strong>Fixed Amount</strong>: e.g., $20 off entire order</li>
+                <li><strong>Free Shipping</strong>: Removes shipping costs</li>
+                <li><strong>BOGO (Buy One Get One)</strong>: Buy one item, get another at a discount</li>
+                <li><strong>Tiered Discounts</strong>: Spend more, save more</li>
+                <li><strong>Combination</strong>: Multiple discount types combined</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Key Features</h3>
+            <ul>
+                <li><strong>Automated Testing</strong>: No manual checkout process needed</li>
+                <li><strong>Parallel Testing</strong>: Test multiple vouchers simultaneously</li>
+                <li><strong>Detailed Reports</strong>: HTML, JSON, CSV, Excel formats</li>
+                <li><strong>Screenshots</strong>: Visual verification at each step</li>
+                <li><strong>Configurable</strong>: Works with different store themes</li>
+                <li><strong>UTM Support</strong>: Test marketing campaign tracking</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Sample Test Data</h3>
+        <pre><code>[
+  {
+    "id": "percentage-discount-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product",
+    "voucherCode": "WELCOME10",
+    "expectedDiscount": 10,
+    "voucherType": "PERCENTAGE"
+  },
+  {
+    "id": "free-shipping-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product",
+    "voucherCode": "FREESHIP",
+    "voucherType": "FREE_SHIPPING"
+  },
+  {
+    "id": "utm-test-1",
+    "storeId": "default",
+    "productUrl": "https://example.myshopify.com/products/sample-product?utm_source=email&utm_medium=campaign&utm_campaign=welcome",
+    "voucherCode": "WELCOME10",
+    "expectedDiscount": 10,
+    "voucherType": "PERCENTAGE"
+  }
+]</code></pre>
+    </div>
+
+    <div class="card">
+        <h3>Usage</h3>
+        <pre><code># Initialize configuration
+npm run init
+
+# Update store configuration in config/stores.json
+
+# Run tests
+npm run run -- --file config/tests.json</code></pre>
+        <a href="../README.md" class="btn">View Documentation</a>
+    </div>
+
+    <div class="card">
+        <h3>Sample Report</h3>
+        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px;">
+            <h4>Summary</h4>
+            <p>✓ Successful: 8 (80%)<br>
+            ✗ Failed: 1<br>
+            ⚠ Skipped: 1</p>
+            
+            <h4>Test Results</h4>
+            <div style="border-left: 5px solid #28a745; padding: 10px; margin-bottom: 10px; background-color: #fff;">
+                <strong>Test: percentage-discount-1</strong><br>
+                Store ID: default<br>
+                Voucher Code: WELCOME10<br>
+                Status: <span style="color: #28a745;">Success</span><br>
+                Voucher Type: PERCENTAGE<br>
+                Expected Discount: 10<br>
+                Actual Discount: 10
+            </div>
+            
+            <div style="border-left: 5px solid #dc3545; padding: 10px; margin-bottom: 10px; background-color: #fff;">
+                <strong>Test: fixed-amount-1</strong><br>
+                Store ID: default<br>
+                Voucher Code: SAVE20<br>
+                Status: <span style="color: #dc3545;">Failure</span><br>
+                Voucher Type: FIXED_AMOUNT<br>
+                Expected Discount: 20<br>
+                Actual Discount: 0<br>
+                Error: Voucher verification failed
+            </div>
+        </div>
+    </div>
+
+    <footer style="margin-top: 50px; text-align: center; color: #6c757d; border-top: 1px solid #eee; padding-top: 20px;">
+        <p>Voucher QC Tool - MIT License</p>
+    </footer>
+</body>
+</html>
